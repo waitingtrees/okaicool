@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>OKAI.cool – AI for Oklahoma Small Business</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Help small businesses in Oklahoma get equipped with AI to boost sales, engagement, and keep websites automatically updated.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#1133F2;--accent-grad:linear-gradient(135deg,#1133F2,#0A2FAE 65%);--text:#222;--text-dim:#555;--bg:#ffffff;--panel:#ffffff;--line:#e5e7eb;--line-strong:#d0d4da;--radius-s:6px;--radius-m:12px;--radius-l:20px;--mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif}
+body{font-family:var(--sans);background:radial-gradient(circle at 70% 18%,#f3f5fa 0%,#ffffff 65%);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1020px;margin:0 auto;padding:0 clamp(32px,5vw,64px)}
+
+/* Header */
+.header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px;padding:56px 0 40px;position:relative}
+.brand{display:flex;align-items:center;gap:20px}
+.brand-mark{position:relative;width:64px;height:64px;border-radius:50%;background:var(--accent);box-shadow:0 4px 14px -4px rgba(17,51,242,.55),0 2px 4px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#fff}
+.site-name{font-size:32px;font-weight:750;letter-spacing:1px;line-height:.9;background:var(--accent-grad);-webkit-background-clip:text;color:transparent}
+.nav{display:flex;gap:32px;align-items:center}
+.nav a{color:var(--text-dim);text-decoration:none;font-weight:500;font-size:14px;transition:color .3s}
+.nav a:hover{color:var(--accent)}
+.cta-button{background:var(--accent-grad);color:#fff;padding:12px 24px;border-radius:var(--radius-s);text-decoration:none;font-weight:600;font-size:14px;box-shadow:0 4px 12px -4px rgba(17,51,242,.35);transition:transform .2s,box-shadow .2s}
+.cta-button:hover{transform:translateY(-1px);box-shadow:0 6px 18px -4px rgba(17,51,242,.45)}
+
+/* Hero Section */
+.hero{text-align:center;padding:80px 0 100px}
+.hero h1{font-size:clamp(48px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:24px;background:linear-gradient(135deg,#111,var(--accent));-webkit-background-clip:text;color:transparent}
+.hero p{font-size:20px;color:var(--text-dim);max-width:600px;margin:0 auto 40px;line-height:1.5}
+.hero .cta-button{font-size:16px;padding:16px 32px;margin:0 12px 12px 0;display:inline-block}
+.hero .cta-secondary{background:transparent;color:var(--accent);border:2px solid var(--accent);box-shadow:none}
+.hero .cta-secondary:hover{background:var(--accent);color:#fff}
+
+/* Problem Section */
+.problem{padding:80px 0;background:#fff;border-radius:var(--radius-l);margin:40px 0;box-shadow:0 4px 18px -6px rgba(0,0,0,.08)}
+.problem h2{font-size:36px;font-weight:700;text-align:center;margin-bottom:32px;color:#111}
+.problem p{font-size:18px;line-height:1.6;max-width:800px;margin:0 auto;color:var(--text-dim);padding:0 32px}
+
+/* Solution Section */
+.solution{padding:80px 0}
+.solution h2{font-size:36px;font-weight:700;text-align:center;margin-bottom:60px;color:#111}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-bottom:60px}
+.step{background:#fff;border:1px solid var(--line);padding:32px;border-radius:var(--radius-l);text-align:center;position:relative;box-shadow:0 4px 18px -6px rgba(0,0,0,.08)}
+.step-number{position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:40px;height:40px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+.step h3{font-size:24px;font-weight:600;margin:20px 0 16px;color:#111}
+.step p{color:var(--text-dim);line-height:1.5}
+
+/* Benefits Section */
+.benefits{padding:80px 32px;background:#fff;border-radius:var(--radius-l);margin:40px 0;box-shadow:0 4px 18px -6px rgba(0,0,0,.08)}
+.benefits h2{font-size:36px;font-weight:700;text-align:center;margin-bottom:60px;color:#111}
+.benefit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+.benefit{display:flex;align-items:flex-start;gap:16px}
+.benefit-icon{width:24px;height:24px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:4px}
+.benefit p{font-size:16px;font-weight:500;color:#111}
+
+/* Social Proof */
+.social-proof{padding:80px 0;text-align:center}
+.social-proof h2{font-size:36px;font-weight:700;margin-bottom:40px;color:#111}
+.testimonial{background:#fff;border:1px solid var(--line);padding:40px;border-radius:var(--radius-l);max-width:700px;margin:0 auto 32px;box-shadow:0 4px 18px -6px rgba(0,0,0,.08)}
+.testimonial p{font-size:18px;font-style:italic;color:var(--text-dim);line-height:1.6;margin-bottom:20px}
+.testimonial .attribution{font-weight:600;color:#111;font-style:normal}
+.trust-badge{font-size:16px;font-weight:600;color:var(--accent);margin-top:20px}
+
+/* Packages */
+.packages{padding:80px 0}
+.packages h2{font-size:36px;font-weight:700;text-align:center;margin-bottom:60px;color:#111}
+.package-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.package{background:#fff;border:1px solid var(--line);padding:40px 32px;border-radius:var(--radius-l);text-align:center;position:relative;box-shadow:0 4px 18px -6px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s}
+.package:hover{transform:translateY(-4px);box-shadow:0 8px 32px -8px rgba(0,0,0,.15)}
+.package.featured{border:2px solid var(--accent);transform:scale(1.05)}
+.package.featured::before{content:"Most Popular";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:6px 20px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:1px}
+.package h3{font-size:24px;font-weight:700;margin-bottom:8px;color:#111}
+.package .price{font-size:32px;font-weight:800;color:var(--accent);margin-bottom:4px}
+.package .price-sub{font-size:14px;color:var(--text-dim);margin-bottom:24px}
+.package ul{list-style:none;text-align:left;margin-bottom:32px}
+.package li{padding:8px 0;color:var(--text-dim);position:relative;padding-left:24px}
+.package li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.package .cta-button{width:100%;justify-content:center;display:flex}
+
+/* FAQ */
+.faq{padding:80px 0;background:#fff;border-radius:var(--radius-l);margin:40px 0;box-shadow:0 4px 18px -6px rgba(0,0,0,.08)}
+.faq h2{font-size:36px;font-weight:700;text-align:center;margin-bottom:60px;color:#111}
+.faq-item{border-bottom:1px solid var(--line);padding:24px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-question{font-size:18px;font-weight:600;color:#111;margin-bottom:12px}
+.faq-answer{color:var(--text-dim);line-height:1.6}
+
+/* Final CTA */
+.final-cta{padding:80px 0;text-align:center;background:var(--accent-grad);border-radius:var(--radius-l);margin:40px 0;color:#fff}
+.final-cta h2{font-size:36px;font-weight:700;margin-bottom:20px}
+.final-cta p{font-size:18px;opacity:.9;margin-bottom:32px}
+.final-cta .cta-button{background:#fff;color:var(--accent);border:none}
+.final-cta .cta-button:hover{transform:translateY(-1px);box-shadow:0 6px 18px -4px rgba(255,255,255,.3)}
+
+/* Footer */
+.footer{padding:60px 0 40px;text-align:center;border-top:1px solid var(--line);margin-top:60px}
+.footer p{color:var(--text-dim);font-size:14px}
+.footer a{color:var(--accent);text-decoration:none}
+
+/* Responsive */
+@media (max-width:768px){
+.header{flex-direction:column;text-align:center;gap:24px}
+.nav{flex-wrap:wrap;justify-content:center;gap:20px}
+.hero{padding:60px 0 80px}
+.hero h1{font-size:42px}
+.hero p{font-size:18px}
+.problem,.solution,.benefits,.faq{padding:60px 32px}
+.packages{padding:60px 0}
+.package-grid{grid-template-columns:1fr}
+.package.featured{transform:none}
+.steps{grid-template-columns:1fr}
+.benefit-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<header class="header">
+<div class="brand">
+<h1 class="site-name">OKAI.COOL</h1>
+</div>
+<nav class="nav">
+<a href="#solution">How It Works</a>
+<a href="#packages">Pricing</a>
+<a href="#faq">FAQ</a>
+<a href="#contact" class="cta-button">Book Free Call</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Never lose a sale because your website is out of date.</h1>
+<p>We help small businesses in Oklahoma use AI to keep their products, services, and website updated—automatically.</p>
+<a href="#contact" class="cta-button">Book a Free Consultation</a>
+<a href="#solution" class="cta-button cta-secondary">See How It Works</a>
+</section>
+
+<div class="container">
+<section class="problem">
+<h2>The Problem</h2>
+<p>Your customers are searching online before they ever pick up the phone. But too often, websites are outdated, missing products, or unclear about services. This leads to lost sales, wasted time answering repetitive calls, and frustrated customers.</p>
+</section>
+</div>
+
+<section id="solution" class="solution">
+<div class="container">
+<h2>Our 3-Step Process</h2>
+<div class="steps">
+<div class="step">
+<div class="step-number">1</div>
+<h3>Audit & Input</h3>
+<p>We catalog your entire product and service offering, then digitize it into a structured system.</p>
+</div>
+<div class="step">
+<div class="step-number">2</div>
+<h3>Automation Setup</h3>
+<p>AI connects your inventory to your website. New products, services, or changes update automatically.</p>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<h3>Ongoing Support</h3>
+<p>AI-powered chatbots, automated social posts, and customer insights help you stay one step ahead.</p>
+</div>
+</div>
+<div style="text-align:center;">
+<a href="#packages" class="cta-button">See How It Works</a>
+</div>
+</div>
+</section>
+
+<div class="container">
+<section class="benefits">
+<h2>Why Oklahoma Businesses Choose OKAI</h2>
+<div class="benefit-grid">
+<div class="benefit">
+<div class="benefit-icon"></div>
+<p><strong>Save time</strong> by automating the boring tasks.</p>
+</div>
+<div class="benefit">
+<div class="benefit-icon"></div>
+<p><strong>Capture more sales</strong> by keeping your site always up-to-date.</p>
+</div>
+<div class="benefit">
+<div class="benefit-icon"></div>
+<p><strong>Build trust</strong> with professional, accurate online info.</p>
+</div>
+<div class="benefit">
+<div class="benefit-icon"></div>
+<p><strong>Make it easier than ever</strong> for customers to do business with you.</p>
+</div>
+</div>
+</section>
+</div>
+
+<section class="social-proof">
+<div class="container">
+<h2>Trusted by Local Oklahoma Businesses</h2>
+<div class="testimonial">
+<p>"We had customers calling daily about products that weren't on our website. After setting up AI automation, our full catalog is always online, and customers can shop without needing to call first."</p>
+<div class="attribution">— Local Tulsa Business Owner</div>
+</div>
+<div class="trust-badge">Trusted by local businesses across Oklahoma.</div>
+</div>
+</section>
+
+<section id="packages" class="packages">
+<div class="container">
+<h2>Choose Your Package</h2>
+<div class="package-grid">
+<div class="package">
+<h3>Starter Package</h3>
+<div class="price">$499</div>
+<div class="price-sub">One-time setup</div>
+<ul>
+<li>Inventory audit & digitization</li>
+<li>Website automation setup</li>
+<li>Training session for your staff</li>
+<li>Basic AI integration</li>
+</ul>
+<a href="#contact" class="cta-button">Get Started</a>
+</div>
+<div class="package featured">
+<h3>Growth Package</h3>
+<div class="price">$799</div>
+<div class="price-sub">Setup + $99/month</div>
+<ul>
+<li>Everything in Starter</li>
+<li>AI chatbot trained on your business</li>
+<li>Automatic social post generator</li>
+<li>Monthly optimization calls</li>
+<li>Priority support</li>
+</ul>
+<a href="#contact" class="cta-button">Most Popular</a>
+</div>
+<div class="package">
+<h3>Full Automation</h3>
+<div class="price">$1,499</div>
+<div class="price-sub">Setup + $199/month</div>
+<ul>
+<li>Everything in Growth</li>
+<li>Analytics dashboard</li>
+<li>Custom AI workflows</li>
+<li>Advanced automation</li>
+<li>Dedicated account manager</li>
+</ul>
+<a href="#contact" class="cta-button">Go Premium</a>
+</div>
+</div>
+</div>
+</section>
+
+<div class="container">
+<section id="faq" class="faq">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-question">Do I need to know how to use AI?</div>
+<div class="faq-answer">No. We set everything up for you and train your staff on how to use the system.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Do I have to switch website platforms?</div>
+<div class="faq-answer">No. We integrate with what you already use (WordPress, Shopify, Squarespace, etc.).</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">How long does setup take?</div>
+<div class="faq-answer">Typically 1–2 weeks from start to finish.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What if I don't keep my inventory updated?</div>
+<div class="faq-answer">We'll show you simple workflows to make updates seamless—or we can manage it for you with our higher-tier packages.</div>
+</div>
+</div>
+</section>
+</div>
+
+<section class="final-cta">
+<div class="container">
+<h2>Stop losing sales to an outdated website.</h2>
+<p>Let's fix it with AI and get your Oklahoma business ahead of the competition.</p>
+<a href="mailto:hello@okai.cool" class="cta-button">Book Your Free Call</a>
+</div>
+</section>
+
+<footer id="contact" class="footer">
+<div class="container">
+<p>Ready to get started? <a href="mailto:hello@okai.cool">hello@okai.cool</a></p>
+<p style="margin-top:12px; font-size:12px; opacity:0.7;">© 2025 OKAI.cool. Helping Oklahoma businesses thrive with AI.</p>
+</div>
+</footer>
+
+</div>
+
+<script>
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+
+// Add scroll effect to header
+window.addEventListener('scroll', () => {
+const header = document.querySelector('.header');
+if (window.scrollY > 100) {
+header.style.background = 'rgba(255,255,255,0.95)';
+header.style.backdropFilter = 'blur(10px)';
+header.style.borderBottom = '1px solid var(--line)';
+} else {
+header.style.background = 'transparent';
+header.style.backdropFilter = 'none';
+header.style.borderBottom = 'none';
+}
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+entry.target.style.transform = 'translateY(0)';
+}
+});
+}, observerOptions);
+
+// Observe sections for animations
+document.querySelectorAll('section').forEach(section => {
+section.style.opacity = '0';
+section.style.transform = 'translateY(20px)';
+section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+observer.observe(section);
+});
+</script>
+
+</body>
+</html>
